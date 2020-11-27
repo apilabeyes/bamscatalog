@@ -1,2 +1,4 @@
 dist/
 dist_electron/
+vue2/node_modules
+vue2/package-lock.json

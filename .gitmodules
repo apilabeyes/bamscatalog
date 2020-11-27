@@ -1,0 +1,3 @@
+[submodule "vue2/public/myapi01"]
+	path = vue2/public/myapi01
+	url = https://4507732a21d8d24f29a3fc80fa6244218bfd8ad7@github.com/apilabeyes/myapi01
