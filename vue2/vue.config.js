@@ -4,7 +4,7 @@ module.exports = {
   publicPath:'',
   lintOnSave : true,
   productionSourceMap: process.env.NODE_ENV === 'production'? false :true,
-  outputDir:process.env.NODE_ENV === 'production'? '../gitPages/dist' :'debug',
+  outputDir:process.env.NODE_ENV === 'production'? '../docs' :'debug',
   pages:{
     index:{
       entry: './src/main.js',      //メインとなるJSファイル
