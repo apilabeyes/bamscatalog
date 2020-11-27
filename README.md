@@ -28,16 +28,21 @@ OpenAPIをリストし、APIを選択するとOpenAPI文書を元にしたUI画�
 - KeycloakのようなOAuth認証サーバと連携したログイン機能とJWTトークンを使ったロールやスコープ別の表示内容変更ができるようにしたい。
 - APIの利用状況のダッシュボード表示がしたい。まずはAPIの実行トランザクション数と成功数と失敗数と平均レスポンスタイムを表示を試みます。さらにはログイン組織ごとのトランザクション数とRate Limit数、APIトークンなどの認証情報のセットを試みます。
 
-## ビルド方法(Webページ版)
-前提条件: nodeのバージョンは14.15
+## Webページ版のBAMsカタログ生成方法
+### 前提条件:
+- nodeのバージョンは14.15
+### ビルド結果：
+- docsフォルダにWebページ版のBAMsカタログが生成されます
+### ビルド方法
 ```
 $ cd vue2
 $ npm install
-$ npm run build # docsフォルダにWebページ版のBAMsカタログが生成されます
+$ npm run build
 ```
 
-## カタログリスト
-「apicatalog.json」ファイルにAPIカタログにリストしたいカタログをリストします。
+### カスタマイズ方法：
+#### (1) カタログリストのカスタマイズ
+- 「vud2/public/apicatalog.json」ファイルにAPIカタログにリストしたいカタログを下記のとおり記載してビルドします。
 ```
 [
   {
@@ -50,36 +55,17 @@ $ npm run build # docsフォルダにWebページ版のBAMsカタログが生成
   ...
 ]
 ```
+#### (2) OpenAPI文書の配置
+OpenAPI文書は別リポジトリで管理し、それらを「vue2/public」フォルダ下にsubmoduleとして取り込むことでビルド時のカタログへのコピー対象にします。
 
-## Swagger UIの実行方法
-まず[こちら](https://petstore.swagger.io/)でOpenAPI仕様を読み込むとどのようなUIが表示されて「Try it out」をクリックしてexecuteをクリックするとAPIが実行されるようすを試します。
+```
+$ cd vue2/public
+$ git submodule add https://[token]@github.com/apilabeyes/myapi01 myapi01
+```
+※ トークンはGitHub右上のアカウントから「Settings」を選択、左のメニューから「Developer settings」を選択、「Personal access tokens」の「Generate new token」ボタンを押下して、Noteに「submodule用アクセストークン」などをメモ、「Set scopes」では「repo」全体をチェックして「Generate token」ボタンを押下するとトークンが表示されるのでコピーして上述の[token]の箇所に添付してコマンドを実行します。
 
-1. サンプル実行しやすいGETを選ぶ
-![](./images/swaggerui01.png)
-2. "Try it out"をクリックしパラメータ入力可能にする
-![](./images/swaggerui02.png)
-3. パラメータpetIdに1を入力して「Execute」ボタンをクリックすると実行したCurlコマンドとレスポンスが表示される
-![](./images/swaggerui03.png)
 
-## Swagger UI等の開発部品としての使い方
-上で試したSwagger UIのソースコードは[SwaggerUIのgithub上](https://github.com/swagger-api/swagger-ui)に存在し、UI画面を表示するためのnmpモジュールは下記にあります。
-- [swagger-ui-dist](https://www.npmjs.com/package/swagger-ui-dist): HTMLに直接のせられるSwaggerUI部品
-- [swagger-ui-react](https://www.npmjs.com/package/swagger-ui-react): react用SwaggerUI部品
- 
-これらを参考にGridView上の一つをクリックしたときに表示されるSwagger UI画面を開発しました。
-
-- 参考1: [Swagger UIのWebアプリへの組み込み方](https://dev.classmethod.jp/articles/swagger-ui-without-server/)
-- 参考2: GridViewは下記の[insomniaのstorybookの部品](https://deploy-preview-2565--insomnia-storybook.netlify.app/?path=/story/navigation-card--deck)を使っています
-
-## Github情報
-Web版APIカタログはGithub「apilabeyes」アカウントのプライベートリポジトリのGithubページで公開。準備したリポジトリは以下の4つ。
- 
-- test: OpenAPI仕様UIやOpenAPI文書をGithubページで公開するテスト用に作ったプライベートリポジトリ。
-- myapi01: デモ用のOpenAPI文書をセットしたプライベートリポジトリ。
-- bamscatalog: 本プライベートリポジトリ。docsフォルダ下をGithub PagesとしてWeb版BAMsカタログを公開。そこで参照するOpenAPI文書はmyapi01に入れサブモジュールとして取り込む。
-- apitest: テスト用APIのプライベートリポジトリ。
-
-## Githubの使い方
+### (参考)Githubの使い方
 1. clone方法
 ```
 $ git clone https://[ユーザ名]:[パスワード]@github.com/apilabeyes/[リポジトリ名].git
@@ -95,11 +81,3 @@ $ git push
 ```
 ※ VSCodeを使うとより簡単に操作できます
 
-## OpenAPI文書の配置
-OpenAPI文書は別リポジトリで管理し、それらをsubmoduleとして取り込むことでカタログに表示します。
-
-```
-$ git submodule add https://[token]@github.com/apilabeyes/myapi01 myapi01
-```
-
-※ トークンはGitHub右上のアカウントから「Settings」を選択、左のメニューから「Developer settings」を選択、「Personal access tokens」の「Generate new token」ボタンを押下して、Noteに「submodule用アクセストークン」などをメモ、「Set scopes」では「repo」全体をチェックして「Generate token」ボタンを押下するとトークンが表示されるのでコピーして上述の[token]の箇所に添付してコマンドを実行します。
