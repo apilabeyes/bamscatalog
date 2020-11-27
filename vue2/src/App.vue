@@ -1,0 +1,58 @@
+<template>
+  <div id="app">
+    <div id="nav">
+      <index-comp :catalog-json="catalog_json" @api-selected="changeJsonPath($event)" v-if="displaying_page === 'index'"></index-comp>
+      <swagger-comp :json-path="selected_json_path" @click-return-btn="changeView($event)" v-if="displaying_page === 'swagger'"></swagger-comp>
+    </div>
+  </div>
+</template>
+
+
+<script>
+import axios from 'axios'
+
+import Index from '@/views/Index.vue'; // @ is an alias to /src
+import Swagger from '@/views/Swagger.vue'; // @ is an alias to /src
+
+export default  {
+    name : 'App',
+    data() {
+      return {
+        catalog_json: [],
+        selected_json_path: '',
+        displaying_page: 'index',
+      }
+    },
+    components: {
+        'index-comp': Index,
+        'swagger-comp': Swagger,
+    },
+    created() {
+      this.$set(this,'catalog_json', []);
+    },
+    async mounted() {
+      await this.init();
+    },
+    watch: {
+        catalogJson(newValue) {
+            this.$set(this, 'catalogs', newValue);
+        }
+    },
+    methods:{
+      async init() {
+        const response = await axios.get("./apicatalog.json");
+        this.$set(this,'catalog_json',response.data);
+      },
+      changeJsonPath(path) {
+        this.$set(this,'selected_json_path', path);
+        this.$set(this,'displaying_page', 'swagger');
+      },
+      changeView(display_page_name) {
+        this.$set(this, 'displaying_page', display_page_name);
+        this.init();
+      }
+  }
+
+}
+
+</script>

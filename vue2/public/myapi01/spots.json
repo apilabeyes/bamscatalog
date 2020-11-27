@@ -1,0 +1,138 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "観光API",
+    "description": "観光地情報を登録して、カテゴリで検索して、詳細情報を取得するAPIです。",
+    "version": "1.0",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://licenses.opensource.jp/Apache-2.0/Apache-2.0.html"
+    },
+    "termsOfService": "https://ja.wikipedia.org/wiki/Wikipedia:%E3%82%A6%E3%82%A3%E3%82%AD%E3%83%9A%E3%83%87%E3%82%A3%E3%82%A2%E3%82%92%E4%BA%8C%E6%AC%A1%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B"
+  },
+  "servers": [
+    {
+      "url": "http://localhost/sightseeing/v1"
+    }
+  ],
+  "paths": {
+    "/spots": {
+      "get": {
+        "description": "観光情報を取得する",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/spots"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "観光情報を登録する",
+        "requestBody": {
+          "description": "観光情報",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/spot"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/spot{id}": {
+      "get": {
+        "description": "IDを指定して観光地情報を取得する",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "観光地のID",
+            "schema": {
+              "type": "integer",
+              "example": "1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/spot"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "spot": {
+        "type": "object",
+        "description": "観光地のオブジェクト",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "鶴ヶ城"
+          },
+          "description": {
+            "type": "string",
+            "example": "若松城は、福島県会津若松市追手町にあった日本の城である。地元では鶴ヶ城と呼ばれるが、同名の城が他にあるため、地元以外では会津若松城と呼ばれることが多い。文献では黒川城、または会津城とされることもある。国の史跡としては、若松城跡の名称で指定されている"
+          },
+          "image": {
+            "type": "string",
+            "example": "https://upload.wikimedia.org/wikipedia/commons/1/16/Wakamatsu_castle.jpg"
+          }
+        }
+      },
+      "spots": {
+        "type": "array",
+        "description": "観光地オブジェクトの配列",
+        "items": {
+          "$ref": "#/components/schemas/spot"
+        },
+        "example": [
+          {
+            "id": 1,
+            "name": "鶴ヶ城",
+            "description": "若松城は、福島県会津若松市追手町にあった日本の城である。地元では鶴ヶ城と呼ばれるが、同名の城が他にあるため、地元以外では会津若松城と呼ばれることが多い。文献では黒川城、または会津城とされることもある。国の史跡としては、若松城跡の名称で指定されている",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/1/16/Wakamatsu_castle.jpg"
+          },
+          {
+            "id": 2,
+            "name": "会津大塚山古墳",
+            "description": "一箕(いっき)古墳群を構成する古墳の1つ。形状は前方後円墳。国の史跡に指定され出土品は国の重要文化財に指定されている。福島県では亀ヶ森古墳に次いで第2位、東北地方では第4位の規模を誇る古墳で4世紀末の築造と推定される。",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Aizu-otsukayama-kofun_funcho.JPG"
+          },
+          {
+            "id": 3,
+            "name": "会津さざえ堂",
+            "description": "二重らせん構造の斜路をもつ特異な建物として知られる。かつてこの地にあった正宗寺の仏堂として江戸時代後期の寛政8年（1796年）に当時の住職であった郁堂（いくどう）が建立したものである。",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Sazaedou_Aidu_Japan01.jpg"
+          }
+        ]
+      }
+    }
+  }
+}
