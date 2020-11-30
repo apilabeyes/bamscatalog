@@ -265,6 +265,10 @@ html {
         padding-left: var(--padding-md);
     }
 
+    .iXypFd .title {
+        font-weight: bold;
+    }
+
     .iXypFd .version {
         font-size: var(--font-size-xs);
         padding-top: var(--padding-xs);

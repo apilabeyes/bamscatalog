@@ -3,7 +3,8 @@
     "name":"ペットストア",
     "category":"店舗",
     "api":"./myapi01/pets.json",
-    "description": "ペットストアのAPIです。"
+    "description": "ペットストアのAPIです。",
+    "images": "./myapi01/images/cat.jpg"
   },
   {
     "name":"観光API",
@@ -16,7 +17,8 @@
     "name":"ペットストア",
     "category":"店舗",
     "api":"./myapi01/pets.json",
-    "description": "ペットストアのAPIです。"
+    "description": "ペットストアのAPIです。",
+    "images": "./myapi01/images/cat.jpg"
   },
   {
     "name":"観光API",
@@ -29,7 +31,8 @@
     "name":"ペットストア",
     "category":"店舗",
     "api":"./myapi01/pets.json",
-    "description": "ペットストアのAPIです。"
+    "description": "ペットストアのAPIです。",
+    "images": "./myapi01/images/cat.jpg"
   },
   {
     "name":"観光API",
@@ -42,7 +45,8 @@
     "name":"ペットストア",
     "category":"店舗",
     "api":"./myapi01/pets.json",
-    "description": "ペットストアのAPIです。"
+    "description": "ペットストアのAPIです。",
+    "images": "./myapi01/images/cat.jpg"
   },
   {
     "name":"観光API",
@@ -55,7 +59,8 @@
     "name":"ペットストア",
     "category":"店舗",
     "api":"./myapi01/pets.json",
-    "description": "ペットストアのAPIです。"
+    "description": "ペットストアのAPIです。",
+    "images": "./myapi01/images/cat.jpg"
   },
   {
     "name":"観光API",

@@ -136,34 +136,20 @@ class APICatalogPanel {
 	}
 
 	private _getHtmlForWebview(webview: vscode.Webview) {
-		// Local path to main script run in the webview
-		const scriptPathOnDisk = vscode.Uri.joinPath(this._extensionUri, 'media', 'main.js');
-
-		// And the uri we use to load this script in the webview
-		const scriptUri = webview.asWebviewUri(scriptPathOnDisk);
-
-		// Local path to css styles
-		const styleResetPath = vscode.Uri.joinPath(this._extensionUri, 'media', 'reset.css');
-		const stylesPathMainPath = vscode.Uri.joinPath(this._extensionUri, 'media', 'vscode.css');
 		const basePath = vscode.Uri.joinPath(this._extensionUri, 'media');
 
-		// Uri to load styles into webview
-		const stylesResetUri = webview.asWebviewUri(styleResetPath);
-		const stylesMainUri = webview.asWebviewUri(stylesPathMainPath);
 		const baseUri = webview.asWebviewUri(basePath);
 
 		// Use a nonce to only allow specific scripts to be run
 		const nonce = getNonce();
-		console.log(this._extensionUri, 'this._extensionUri');
 		const pathToHtml = vscode.Uri.joinPath(this._extensionUri, 'media','index.html');
 		const pathUri = pathToHtml.with({scheme: 'vscode-resource'});
-		console.log(pathUri, 'pathUri');
 		const renderedBaseUri = `${baseUri}`+'\/';
 
 		const htmlStr = fs.readFileSync(pathUri.fsPath,'utf8');
 		let replacedHtmlStr = htmlStr.replace(/href="/g, "href=\""+renderedBaseUri)
 		replacedHtmlStr = replacedHtmlStr.replace(/src="/g, "src=\""+renderedBaseUri)
-		console.log(replacedHtmlStr, 'replaced');
+		replacedHtmlStr = replacedHtmlStr.replace(/data-working-directory-path="/gm, "data-working-directory-path=\""+renderedBaseUri)
 		return replacedHtmlStr;
 		
 	}

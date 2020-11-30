@@ -27,21 +27,21 @@
 				"title": "Start API Catalog Session",
 				"category": "Api Catalog",
 				"icon": {
-					"light":"media/icon_apicatalog.png",
-					"dark":"media/icon_apicatalog.png"
+					"light": "media/icon_apicatalog.png",
+					"dark": "media/icon_apicatalog.png"
 				}
 			}
 		],
 		"viewsContainers": {
 			"activitybar": [
-			  {
-				"id": "api-catalog",
-				"title": "API Catalog",
-				"icon": "media/icon_apicatalog.png"
-			  }
+				{
+					"id": "api-catalog",
+					"title": "API Catalog",
+					"icon": "media/icon_apicatalog.png"
+				}
 			]
-		  },
-		  "views": {
+		},
+		"views": {
 			"api-catalog": [
 				{
 					"id": "APICatalog",
