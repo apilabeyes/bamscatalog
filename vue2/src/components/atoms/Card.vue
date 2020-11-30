@@ -45,6 +45,11 @@
 export default {
     name: 'Card',
     props: {
+        baseUri: {
+            type: String,
+            required: false,
+            default: ''
+        },
         cardData: {
           type: Object,
           required: true
@@ -53,16 +58,20 @@ export default {
     data() {
         return {
             errors: {},
+            base_uri:this.baseUri,
             values: {
                 name: this.cardData.name,
                 description: this.cardData.description,
                 category: this.cardData.category,
                 api: this.cardData.api,
-                images: this.cardData.images
+                images: this.cardData.images,
             }
         }
     },
   watch: {
+      baseUri(newValue) {
+          this.$set(this, 'base_uri', newValue);
+      },
       cardData(newValue) {
           this.$set(this.values, 'name', newValue.name);
           this.$set(this.values, 'description', newValue.description);
@@ -74,7 +83,7 @@ export default {
   computed: {
       backgroundImg() {
           if(this.values.images) {
-            return {'background-image': 'url('+this.values.images+')', 'background-size':'cover', 'background-color':'rgba(255,255,255,0.8)', 'background-blend-mode':'lighten'};
+            return {'background-image': 'url('+this.base_uri+this.values.images+')', 'background-size':'cover'};
           }
           return "";
       }
@@ -242,7 +251,7 @@ html {
         margin: 0 var(--padding-md) var(--padding-md) 0;
         color: rgb(85, 85, 85);
         border-radius: var(--radius-md);
-        background-color:rgba(255,255,255,0.8);
+        background-color:rgba(255,255,255,0.9);
         background-blend-mode:lighten;
     }
 
@@ -260,18 +269,34 @@ html {
     .iXypFd {
         justify-content: normal;
         font-weight: 400;
+        border-radius: 3px;
+        background-color: rgba(255,255,255, 0.9);
         color: var(--font-color);
         margin-top: var(--padding-md);
-        padding-left: var(--padding-md);
+        padding-left: var(--padding-xs);
+        padding-right: var(--padding-xs);
+
     }
 
     .iXypFd .title {
         font-weight: bold;
+        width:100%;
+        height: calc(var(--font-size-xs)*2);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
     }
 
     .iXypFd .version {
         font-size: var(--font-size-xs);
         padding-top: var(--padding-xs);
+        padding-bottom: var(--padding-xs);
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        width: 100%;
+        height: calc(var(--font-size-xs)*3.5);
+        overflow: hidden;
     }
 
     .cZovGs {
@@ -282,10 +307,11 @@ html {
     }
 
     .cHYFZe .card-badge {
-        background-color: rgba(130, 130, 130, 0.1);
+        background-color: rgba(130, 130, 130, 0.8);
         border-top-right-radius: var(--radius-sm);
         border-bottom-right-radius: var(--radius-sm);
         display: flex;
+        color: white;
         -webkit-box-align: center;
         align-items: center;
         padding-left: var(--padding-md);
