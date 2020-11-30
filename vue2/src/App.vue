@@ -21,6 +21,9 @@ export default  {
         catalog_json: [],
         selected_json_path: '',
         displaying_page: 'index',
+        path: {
+          work_directory_uri:"",
+        },
       }
     },
     components: {
@@ -40,11 +43,19 @@ export default  {
     },
     methods:{
       async init() {
-        const response = await axios.get("./apicatalog.json");
-        this.$set(this,'catalog_json',response.data);
+        let tmp = document.getElementById('vscode_path');
+        this.$set(this.path,'work_directory_uri', tmp.dataset.workingDirectoryPath);
+
+        const response = await axios.get(tmp.dataset.workingDirectoryPath+"apicatalog.json");
+        this.$set(this,'catalog_json', response.data);
       },
       changeJsonPath(path) {
-        this.$set(this,'selected_json_path', path);
+        if(this.path.work_directory_uri !== "") {
+          this.$set(this,'selected_json_path', this.path.work_directory_uri + path);
+        } else {
+          this.$set(this, 'selected_json_path', path);
+        }
+
         this.$set(this,'displaying_page', 'swagger');
       },
       changeView(display_page_name) {
