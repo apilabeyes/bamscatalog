@@ -1,7 +1,6 @@
 const MiniCssExtractPlugin=require('mini-css-extract-plugin')
 
 module.exports = {
-  publicPath:'',
   lintOnSave : true,
   productionSourceMap: process.env.NODE_ENV === 'production'? false :true,
   outputDir:process.env.NODE_ENV === 'production'? '../docs' :'debug',
