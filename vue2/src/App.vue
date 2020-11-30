@@ -45,20 +45,20 @@ export default  {
         this.$set(this,'base_uri', tmp.dataset.workingDirectoryPath);
 
         const response = await axios.get(tmp.dataset.workingDirectoryPath+"apicatalog.json");
-        this.$set(this,'catalog_json', response.data);
+        await this.$set(this,'catalog_json', response.data);
       },
       changeJsonPath(path) {
-        if(this.path.work_directory_uri !== "") {
-          this.$set(this,'selected_json_path', this.path.work_directory_uri + path);
+        if(this.base_uri !== "") {
+          this.$set(this,'selected_json_path', this.base_uri + path);
         } else {
           this.$set(this, 'selected_json_path', path);
         }
 
         this.$set(this,'displaying_page', 'swagger');
       },
-      changeView(display_page_name) {
+      async changeView(display_page_name) {
         this.$set(this, 'displaying_page', display_page_name);
-        this.init();
+        await this.init();
       }
   }
 

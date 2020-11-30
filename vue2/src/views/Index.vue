@@ -37,7 +37,7 @@ export default  {
     data: function() {
         return {
             catalogs: [],
-            base_uri: ''
+            base_uri: this.baseUri
         }
     },
     components: {

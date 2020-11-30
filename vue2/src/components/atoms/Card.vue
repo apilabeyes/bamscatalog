@@ -273,8 +273,8 @@ html {
         background-color: rgba(255,255,255, 0.9);
         color: var(--font-color);
         margin-top: var(--padding-md);
-        padding-left: var(--padding-sm);
-        padding-right: var(--padding-sm);
+        padding-left: var(--padding-xs);
+        padding-right: var(--padding-xs);
 
     }
 
