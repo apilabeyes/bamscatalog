@@ -45,6 +45,11 @@
 export default {
     name: 'Card',
     props: {
+        baseUri: {
+            type: String,
+            required: false,
+            default: ''
+        },
         cardData: {
           type: Object,
           required: true
@@ -53,16 +58,20 @@ export default {
     data() {
         return {
             errors: {},
+            base_uri:this.baseUri,
             values: {
                 name: this.cardData.name,
                 description: this.cardData.description,
                 category: this.cardData.category,
                 api: this.cardData.api,
-                images: this.cardData.images
+                images: this.cardData.images,
             }
         }
     },
   watch: {
+      baseUri(newValue) {
+          this.$set(this, 'base_uri', newValue);
+      },
       cardData(newValue) {
           this.$set(this.values, 'name', newValue.name);
           this.$set(this.values, 'description', newValue.description);
@@ -74,7 +83,7 @@ export default {
   computed: {
       backgroundImg() {
           if(this.values.images) {
-            return {'background-image': 'url('+this.values.images+')', 'background-size':'cover', 'background-color':'rgba(255,255,255,0.8)', 'background-blend-mode':'lighten'};
+            return {'background-image': 'url('+this.base_uri+this.values.images+')', 'background-size':'cover', 'background-color':'rgba(255,255,255,0.8)', 'background-blend-mode':'lighten'};
           }
           return "";
       }

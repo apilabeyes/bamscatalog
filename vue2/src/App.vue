@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <index-comp :catalog-json="catalog_json" @api-selected="changeJsonPath($event)" v-if="displaying_page === 'index'"></index-comp>
+      <index-comp :catalog-json="catalog_json" :base-uri="base_uri" @api-selected="changeJsonPath($event)" v-if="displaying_page === 'index'"></index-comp>
       <swagger-comp :json-path="selected_json_path" @click-return-btn="changeView($event)" v-if="displaying_page === 'swagger'"></swagger-comp>
     </div>
   </div>
@@ -21,9 +21,7 @@ export default  {
         catalog_json: [],
         selected_json_path: '',
         displaying_page: 'index',
-        path: {
-          work_directory_uri:"",
-        },
+        base_uri: ''
       }
     },
     components: {
@@ -44,7 +42,7 @@ export default  {
     methods:{
       async init() {
         let tmp = document.getElementById('vscode_path');
-        this.$set(this.path,'work_directory_uri', tmp.dataset.workingDirectoryPath);
+        this.$set(this,'base_uri', tmp.dataset.workingDirectoryPath);
 
         const response = await axios.get(tmp.dataset.workingDirectoryPath+"apicatalog.json");
         this.$set(this,'catalog_json', response.data);

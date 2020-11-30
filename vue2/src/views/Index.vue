@@ -10,7 +10,7 @@
     </div>
     <div id="story-root" style="user-select: auto;">
         <div class="card-container__Cards-nosm6f-0 fVifSY" style="user-select: auto;">
-            <card-comp :card-data="catalog" v-bind:key="'card-comp'+key" v-for="(catalog,key) in catalogs" @card-clicked="$emit('api-selected', $event)"></card-comp>
+            <card-comp :card-data="catalog" :base-uri="base_uri" v-bind:key="'card-comp'+key" v-for="(catalog,key) in catalogs" @card-clicked="$emit('api-selected', $event)"></card-comp>
         </div>
     </div>
 </div>
@@ -24,6 +24,11 @@ import Card from '@/components/atoms/Card.vue'; // @ is an alias to /src
 export default  {
     name : 'Index',
     props:{
+        baseUri: {
+            type: String,
+            required: false,
+            default: ''
+        },
         catalogJson: {
             type:Array,
             required:true
@@ -31,13 +36,17 @@ export default  {
     },
     data: function() {
         return {
-            catalogs: []
+            catalogs: [],
+            base_uri: ''
         }
     },
     components: {
         'card-comp': Card
     },
     watch: {
+        baseUri(newValue) {
+            this.$set(this, 'base_uri', newValue);
+        },
         catalogJson(newValue) {
             this.$set(this, 'catalogs', newValue);
         }
