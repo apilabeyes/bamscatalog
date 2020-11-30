@@ -81,7 +81,7 @@ export default  {
     }
 
     .topbar-wrapper img {
-        content:url('icons/bams_swaggerui.png');
+        content:url('./icons/bams_swaggerui.png');
     }
 
     body
