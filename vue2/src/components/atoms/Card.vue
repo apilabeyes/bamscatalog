@@ -273,6 +273,9 @@ html {
         background-color: rgba(255,255,255, 0.9);
         color: var(--font-color);
         margin-top: var(--padding-md);
+        margin-left: 1px;
+        margin-right: 1px;
+
         padding-left: var(--padding-xs);
         padding-right: var(--padding-xs);
 
