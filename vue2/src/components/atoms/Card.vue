@@ -1,14 +1,14 @@
 <template>
-    <div class="card__StyledCard-sc-1gny77x-0 bVeJeQ deselected" :style="backgroundImg" style="user-select: auto;" @click="$emit('card-clicked', values.api)">
+    <div class="card__StyledCard-sc-1gny77x-0 bVeJeQ deselected"  style="user-select: auto;" @click="$emit('card-clicked', values.api)">
         <div class="card__CardHeader-sc-1gny77x-1 cHYFZe" style="user-select: auto;">
             <div class="header-item card-badge" style="user-select: auto;">{{values.category}}</div>
-            <!--<div class="header-item card-menu" style="user-select: auto;">
-                <label class="card-checkbox-label" style="user-select: auto;">
-                    <input type="checkbox" style="user-select: auto;">
-                    <span class="card-checkbox" style="user-select: auto;"></span>
-                </label>
+            <div class="header-item card-menu" style="user-select: auto;">
+                <p class="circle-icon" :style="backgroundImg"></p>
+<!--                <label class="card-checkbox-label" style="user-select: auto;">-->
+<!--                    <input type="checkbox" style="user-select: auto;">-->
+<!--                    <span class="card-checkbox" style="user-select: auto;"></span>-->
+<!--                </label>-->
             </div>
-            -->
         </div>
         <div class="card__CardBody-sc-1gny77x-2 iXypFd" style="user-select: auto;">
             <div class="title" style="user-select: auto;">{{values.name}}</div>
@@ -323,33 +323,46 @@ html {
         padding: var(--padding-xs);
     }
 
-    .cHYFZe .card-checkbox-label {
-        display: block;
-        position: relative;
-        margin: auto;
-        cursor: default;
-        font-size: var(--font-size-xl);
-        line-height: var(--font-size-xl);
-        height: var(--font-size-xl);
-        width: var(--font-size-xl);
-        clear: both;
+    .cHYFZe .card-menu {
+        font-size: var(--font-size-xs);
+        padding-top: 0;
+        padding-bottom: 0;
     }
 
-    .cHYFZe .card-checkbox-label input {
-        position: absolute;
-        opacity: 0;
-        cursor: default;
-    }
+    /*.cHYFZe .card-checkbox-label {*/
+    /*    display: block;*/
+    /*    position: relative;*/
+    /*    margin: auto;*/
+    /*    cursor: default;*/
+    /*    font-size: var(--font-size-xl);*/
+    /*    line-height: var(--font-size-xl);*/
+    /*    height: var(--font-size-xl);*/
+    /*    width: var(--font-size-xl);*/
+    /*    clear: both;*/
+    /*}*/
 
-    .cHYFZe .card-checkbox-label .card-checkbox {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        height: var(--font-size-xl);
-        width: var(--font-size-xl);
-        background-color: rgba(96, 48, 191, 0.1);
-        border-radius: var(--radius-md);
-        border: 2px solid rgb(96, 48, 191);
+    /*.cHYFZe .card-checkbox-label input {*/
+    /*    position: absolute;*/
+    /*    opacity: 0;*/
+    /*    cursor: default;*/
+    /*}*/
+
+    /*.cHYFZe .card-checkbox-label .card-checkbox {*/
+    /*    position: absolute;*/
+    /*    top: 0px;*/
+    /*    left: 0px;*/
+    /*    height: var(--font-size-xl);*/
+    /*    width: var(--font-size-xl);*/
+    /*    background-color: rgba(96, 48, 191, 0.1);*/
+    /*    border-radius: var(--radius-md);*/
+    /*    border: 2px solid rgb(96, 48, 191);*/
+    /*}*/
+
+    .cHYFZe .circle-icon {
+        width:  40px;       /* ※縦横を同値に */
+        height: 40px;       /* ※縦横を同値に */
+        border-radius: 20%;  /* 角丸にする */
+        background-position: center center;  /* 横長画像の左上を基準に表示 */
     }
 
     .cZovGs .icoLabel {
