@@ -1,0 +1,15 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "補助金申請情報API",
+    "description": "補助金の種類やその条件などの詳細情報を取得したり必要情報を添付して申請手続きを行うことができるAPIです。審査中、受理、不受理といったステータスも取得できます。",
+    "version": "1.0",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://licenses.opensource.jp/Apache-2.0/Apache-2.0.html"
+    },
+    "termsOfService": "https://ja.wikipedia.org/wiki/Wikipedia:%E3%82%A6%E3%82%A3%E3%82%AD%E3%83%9A%E3%83%87%E3%82%A3%E3%82%A2%E3%82%92%E4%BA%8C%E6%AC%A1%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B"
+  },
+  "paths": {
+  }
+}
