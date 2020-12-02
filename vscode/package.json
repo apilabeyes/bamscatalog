@@ -11,9 +11,9 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:APICatalog.start",
-		"onView:APICatalog",
-		"onWebviewPanel:APICatalog"
+		"onCommand:BAMsCatalog.start",
+		"onView:BAMsCatalog",
+		"onWebviewPanel:BAMsCatalog"
 	],
 	"repository": {
 		"type": "git",
@@ -23,9 +23,9 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "APICatalog.start",
-				"title": "Start API Catalog Session",
-				"category": "Api Catalog",
+				"command": "BAMsCatalog.start",
+				"title": "Start BAMs Catalog Session",
+				"category": "BAMs Catalog",
 				"icon": {
 					"light": "media/icon_apicatalog.png",
 					"dark": "media/icon_apicatalog.png"
@@ -35,19 +35,19 @@
 		"viewsContainers": {
 			"activitybar": [
 				{
-					"id": "api-catalog",
-					"title": "API Catalog",
+					"id": "bams-catalog",
+					"title": "BAMs Catalog",
 					"icon": "media/icon_apicatalog.png"
 				}
 			]
 		},
 		"views": {
-			"api-catalog": [
+			"bams-catalog": [
 				{
-					"id": "APICatalog",
-					"name": "API Catalog",
+					"id": "BAMsCatalog",
+					"name": "BAMs Catalog",
 					"icon": "media/icon_apicatalog.png",
-					"contextualTitle": "API Catalog"
+					"contextualTitle": "BAMs Catalog"
 				}
 			]
 		}

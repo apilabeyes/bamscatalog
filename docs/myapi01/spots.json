@@ -15,7 +15,7 @@
     "version" : "0.1"
   },
   "servers" : [ {
-    "url" : "http://localhost:8080"
+    "url" : "http://localhost:8000"
   } ],
   "paths" : {
     "/spots" : {

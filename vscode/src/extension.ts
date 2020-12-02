@@ -3,25 +3,25 @@ import * as fs from 'fs';
 
 export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(
-		vscode.commands.registerCommand('APICatalog.start', () => {
-			APICatalogPanel.createOrShow(context.extensionUri);
+		vscode.commands.registerCommand('BAMsCatalog.start', () => {
+			BAMsCatalogPanel.createOrShow(context.extensionUri);
 		})
 	);
 
 	// context.subscriptions.push(
 	// 	vscode.commands.registerCommand('catCoding.doRefactor', () => {
-	// 		if (APICatalogPanel.currentPanel) {
-	// 			APICatalogPanel.currentPanel.doRefactor();
+	// 		if (BAMsCatalogPanel.currentPanel) {
+	// 			BAMsCatalogPanel.currentPanel.doRefactor();
 	// 		}
 	// 	})
 	// );
 
 	if (vscode.window.registerWebviewPanelSerializer) {
 		// Make sure we register a serializer in activation event
-		vscode.window.registerWebviewPanelSerializer(APICatalogPanel.viewType, {
+		vscode.window.registerWebviewPanelSerializer(BAMsCatalogPanel.viewType, {
 			async deserializeWebviewPanel(webviewPanel: vscode.WebviewPanel, state: any) {
 				console.log(`Got state: ${state}`);
-				APICatalogPanel.revive(webviewPanel, context.extensionUri);
+				BAMsCatalogPanel.revive(webviewPanel, context.extensionUri);
 			}
 		});
 	}
@@ -30,13 +30,13 @@ export function activate(context: vscode.ExtensionContext) {
 /**
  * Manages API Catalog webview panels
  */
-class APICatalogPanel {
+class BAMsCatalogPanel {
 	/**
 	 * Track the currently panel. Only allow a single panel to exist at a time.
 	 */
-	public static currentPanel: APICatalogPanel | undefined;
+	public static currentPanel: BAMsCatalogPanel | undefined;
 
-	public static readonly viewType = 'APICatalog';
+	public static readonly viewType = 'BAMsCatalog';
 
 	private readonly _panel: vscode.WebviewPanel;
 	private readonly _extensionUri: vscode.Uri;
@@ -48,15 +48,15 @@ class APICatalogPanel {
 			: undefined;
 
 		// If we already have a panel, show it.
-		if (APICatalogPanel.currentPanel) {
-			APICatalogPanel.currentPanel._panel.reveal(column);
+		if (BAMsCatalogPanel.currentPanel) {
+			BAMsCatalogPanel.currentPanel._panel.reveal(column);
 			return;
 		}
 
 		// Otherwise, create a new panel.
 		const panel = vscode.window.createWebviewPanel(
-			APICatalogPanel.viewType,
-			'API Catalog',
+			BAMsCatalogPanel.viewType,
+			'BAMs Catalog',
 			column || vscode.ViewColumn.One,
 			{
 				// Enable javascript in the webview
@@ -67,11 +67,11 @@ class APICatalogPanel {
 			}
 		);
 
-		APICatalogPanel.currentPanel = new APICatalogPanel(panel, extensionUri);
+		BAMsCatalogPanel.currentPanel = new BAMsCatalogPanel(panel, extensionUri);
 	}
 
 	public static revive(panel: vscode.WebviewPanel, extensionUri: vscode.Uri) {
-		APICatalogPanel.currentPanel = new APICatalogPanel(panel, extensionUri);
+		BAMsCatalogPanel.currentPanel = new BAMsCatalogPanel(panel, extensionUri);
 	}
 
 	private constructor(panel: vscode.WebviewPanel, extensionUri: vscode.Uri) {
@@ -117,7 +117,7 @@ class APICatalogPanel {
 	}
 
 	public dispose() {
-		APICatalogPanel.currentPanel = undefined;
+		BAMsCatalogPanel.currentPanel = undefined;
 
 		// Clean up our resources
 		this._panel.dispose();
