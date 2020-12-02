@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "ゴミ出し情報API",
-    "description": "ゴミの品目と品目ごとのゴミの出し方、品目・地域ごとの集配日と収集予定時間の情報を取得するAPIです。",
+    "title": "福祉サービス検索API",
+    "description": "各種社会福祉サービスに関する情報を検索することができるAPIです。",
     "version": "1.0",
     "license": {
       "name": "Apache 2.0",
