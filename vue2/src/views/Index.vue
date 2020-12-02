@@ -3,7 +3,7 @@
     <div style="user-select: auto;">
         <div style="font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Segoe UI&quot;, Arial, freesans, sans-serif; color: black; font-weight: 300; line-height: 1.45; font-size: 15px; padding: 20px 40px 20px 40px; border-radius: 2px; background-color: rgb(255, 255, 255); user-select: auto;">
             <div style="border-bottom: 1px solid rgb(238, 238, 238); padding-top: 10px; margin-bottom: 10px; user-select: auto;">
-                <h1 style="margin: 0px; padding: 0px; font-size: 35px; user-select: auto;">API Catalog</h1>
+                <h1 style="margin: 0px; padding: 0px; font-size: 35px; user-select: auto;">BAMs Catalog</h1>
                 <h2 style="margin: 0px 0px 10px; padding: 0px; font-weight: 400; font-size: 22px; user-select: auto;">Index</h2>
             </div>
         </div>
