@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "ゴミ出し情報API",
-    "description": "ゴミの品目と品目ごとのゴミの出し方、品目・地域ごとの集配日と収集予定時間の情報を取得するAPIです。",
+    "title": "地域通貨API",
+    "description": "地域通貨を使った支払いやチャージ、残高参照などを行うためのAPIです。",
     "version": "1.0",
     "license": {
       "name": "Apache 2.0",

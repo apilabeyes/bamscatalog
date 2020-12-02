@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "ゴミ出し情報API",
-    "description": "ゴミの品目と品目ごとのゴミの出し方、品目・地域ごとの集配日と収集予定時間の情報を取得するAPIです。",
+    "title": "配送状況確認API",
+    "description": "自動配送による配送状況を確認することができるAPIです。",
     "version": "1.0",
     "license": {
       "name": "Apache 2.0",
