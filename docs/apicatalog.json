@@ -7,6 +7,13 @@
     "images":"./myapi01/images/cityhall.jpg"
   },
   {
+    "name":"配送状況確認API",
+    "category":"物流",
+    "api":"./myapi01/delivery.json",
+    "description":"自動配送による配送状況を確認することができるAPIです。",
+    "images":"./myapi01/images/delivery.png"
+  },
+  {
     "name":"バス運行データAPI",
     "category":"交通",
     "api":"./myapi01/bus.json",
@@ -26,6 +33,13 @@
     "api":"./myapi01/flood.json",
     "description": "緯度軽度を指定すると河川の氾濫により想定される最大浸水深度(m)を返してくれるAPIです。国土地理院「重ねるハザードマップ」からのデータから値を推測しています。",
     "images": "./myapi01/images/river.jpg"
+  },
+  {
+    "name":"福祉サービス検索API",
+    "category":"社会福祉",
+    "api":"./myapi01/welfare.json",
+    "description":"各種社会福祉サービスに関する情報を検索することができるAPIです。",
+    "images":"./myapi01/images/welfare.png"
   },
   {
     "name":"学校情報取得API",
