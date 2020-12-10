@@ -1,0 +1,3 @@
+[submodule "myapi"]
+	path = myapi
+	url = https://github.com/apilabeyes/myapi
